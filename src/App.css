@@ -1,0 +1,53 @@
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-section {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-area {
+  display: flex;
+  width: 100%;
+}
+
+.menu-list {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  width: 100%;
+  margin-left: 200px;
+}
+.menu-list li {
+  padding: 10px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  border-bottom: solid 1px #000;
+  width: 200px;
+  padding: 5px;
+}
+.search-bar input {
+  border: none;
+  margin-left: 10px;
+}
+:focus {
+  outline: none;
+}
+
+.product-card {
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.1);
+}
