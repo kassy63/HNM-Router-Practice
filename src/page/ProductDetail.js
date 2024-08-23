@@ -5,39 +5,40 @@ import { HashLoader } from "react-spinners";
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const [item, setItem] = useState(null);
+  const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const response = await fetch(
-        `https://my-json-server.typicode.com/kassy63/HNM-Router-Practice/products/${id}`
-      );
-      const data = await response.json();
-      setItem(data);
-    };
+  const getProductDetail = async () => {
+    const url = `https://my-json-server.typicode.com/kassy63/HNM-Router-Practice/products/${id}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    setProduct(data);
+  };
 
-    fetchProduct();
+  useEffect(() => {
+    getProductDetail();
   }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
-  return item ? (
+  return product ? (
     <Container className="mt-5">
       <Row>
         <Col md={6} className="mb-3 d-flex justify-content-center">
           <Card style={{ width: "25rem" }}>
-            <Card.Img variant="top" src={item.img} alt={item.title} />
+            <Card.Img variant="top" src={product.img} alt={product.title} />
           </Card>
         </Col>
         <Col md={6}>
-          <p className="text-muted">{item.new ? "신제품" : "Regular Item"}</p>
-          <h2>{item.title}</h2>
-          <h3>{item.price}원</h3>
+          <p className="text-muted">
+            {product.new ? "신제품" : "Regular Item"}
+          </p>
+          <h2>{product?.title}</h2>
+          <h3>{product?.price}원</h3>
           <p className="text-success ">
-            {item.choice ? "Conscious choice" : "Standard Option"}
+            {product.choice ? "Conscious choice" : "Standard Option"}
           </p>
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
@@ -49,8 +50,8 @@ const ProductDetail = () => {
                 onChange={(e) => setSelectedSize(e.target.value)}
               >
                 <option value="">사이즈 선택</option>
-                {item.size &&
-                  item.size.map((size, index) => (
+                {product.size &&
+                  product.size.map((size, index) => (
                     <option key={index} value={size}>
                       {size}
                     </option>
