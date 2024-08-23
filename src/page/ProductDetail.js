@@ -10,7 +10,9 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const response = await fetch(`http://localhost:5000/products/${id}`);
+      const response = await fetch(
+        `https://my-json-server.typicode.com/kassy63/HNM-Router-Practice/products/${id}`
+      );
       const data = await response.json();
       setItem(data);
     };
