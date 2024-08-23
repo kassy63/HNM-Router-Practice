@@ -7,8 +7,23 @@
 }
 
 .nav-section {
+  position: relative;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.hamburger-menu {
+  display: none;
+  margin-left: auto;
+  cursor: pointer;
 }
 
 .menu-area {
@@ -57,4 +72,57 @@
 
 .product-card:hover {
   transform: scale(1.1);
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.close-button {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.sidebar-menu-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu-list li {
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .menu-area {
+    display: none;
+  }
+
+  .hamburger-menu {
+    /* 화면 너비 768px 이하 햄버거 버튼 표시 */
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger-menu {
+    /* 화면 너비 769px 이상 햄버거 버튼 숨김 */
+    display: none;
+  }
 }
